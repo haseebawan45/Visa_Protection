@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../utils/routes.dart';
 
 class VisaRegularServiceScreen extends StatelessWidget {
   const VisaRegularServiceScreen({super.key});
@@ -51,7 +52,9 @@ class VisaRegularServiceScreen extends StatelessWidget {
             ),
             const SizedBox(height: 32),
             ElevatedButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.pushNamed(context, AppRoutes.cardManagement);
+              },
               style: ElevatedButton.styleFrom(
                 padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 16),
                 backgroundColor: Colors.blue,

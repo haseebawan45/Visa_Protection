@@ -9,6 +9,11 @@ import '../screens/visa_business_service_screen.dart';
 import '../screens/paypal_regular_service_screen.dart';
 import '../screens/paypal_business_service_screen.dart';
 import '../screens/service_plan_comparison_screen.dart';
+import '../screens/card_management_screen.dart';
+import '../screens/budget_lock_screen.dart';
+import '../screens/freeze_unfreeze_screen.dart';
+import '../screens/scam_radar_screen.dart';
+import '../screens/ai_refund_assistant_screen.dart';
 
 class AppRoutes {
   static const String dashboard = '/';
@@ -21,6 +26,11 @@ class AppRoutes {
   static const String paypalRegularService = '/paypal-regular-service';
   static const String paypalBusinessService = '/paypal-business-service';
   static const String servicePlanComparison = '/service-plan-comparison';
+  static const String cardManagement = '/card-management';
+  static const String budgetLock = '/budget-lock';
+  static const String freezeUnfreeze = '/freeze-unfreeze';
+  static const String scamRadar = '/scam-radar';
+  static const String aiRefundAssistant = '/ai-refund-assistant';
   
   static Map<String, WidgetBuilder> getRoutes() {
     return {
@@ -39,6 +49,11 @@ class AppRoutes {
           serviceName: args['serviceName'] as String,
         );
       },
+      cardManagement: (context) => const CardManagementScreen(),
+      budgetLock: (context) => const BudgetLockScreen(),
+      freezeUnfreeze: (context) => const FreezeUnfreezeScreen(),
+      scamRadar: (context) => const ScamRadarScreen(),
+      aiRefundAssistant: (context) => const AIRefundAssistantScreen(),
     };
   }
 } 
