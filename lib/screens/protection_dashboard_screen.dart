@@ -1,35 +1,9 @@
 import 'package:flutter/material.dart';
-import 'utils/routes.dart';
+import '../components/protection_card.dart';
+import '../utils/routes.dart';
 
-void main() {
-  runApp(const MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Visa Protection',
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-        scaffoldBackgroundColor: const Color(0xFF0A1929),
-        appBarTheme: const AppBarTheme(
-          backgroundColor: Colors.transparent,
-          elevation: 0,
-          foregroundColor: Colors.white,
-        ),
-      ),
-      initialRoute: AppRoutes.dashboard,
-      routes: AppRoutes.getRoutes(),
-    );
-  }
-}
-
-class ProtectionDashboard extends StatelessWidget {
-  const ProtectionDashboard({super.key});
+class ProtectionDashboardScreen extends StatelessWidget {
+  const ProtectionDashboardScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -81,7 +55,7 @@ class ProtectionDashboard extends StatelessWidget {
                       icon: Icons.account_balance_wallet,
                       color: Colors.blue,
                       isActive: true,
-                      onTap: () {},
+                      onTap: () => Navigator.pushNamed(context, AppRoutes.visaPaypal),
                     ),
                     
                     // Gmail
@@ -150,78 +124,10 @@ class ProtectionDashboard extends StatelessWidget {
                   ),
                 ),
               ),
-              const SizedBox(height: 16),
-              
-              // Text description
-              Container(
-                padding: const EdgeInsets.all(16),
-                color: Colors.black,
-                child: const Text(
-                  'In this dashboard just the visa and paypal protection is working',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 16,
-                  ),
-                ),
-              ),
             ],
           ),
         ),
       ),
     );
   }
-}
-
-class ProtectionCard extends StatelessWidget {
-  final String title;
-  final IconData icon;
-  final Color color;
-  final bool isActive;
-  final VoidCallback onTap;
-
-  const ProtectionCard({
-    super.key,
-    required this.title,
-    required this.icon,
-    required this.color,
-    required this.isActive,
-    required this.onTap,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: isActive ? onTap : null,
-      child: Container(
-        padding: const EdgeInsets.all(16),
-        decoration: BoxDecoration(
-          color: const Color(0xFF0E2A47),
-          borderRadius: BorderRadius.circular(12),
-          border: isActive 
-            ? Border.all(color: Colors.blue, width: 2) 
-            : null,
-        ),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Icon(
-              icon,
-              color: color,
-              size: 48,
-            ),
-            const SizedBox(height: 16),
-            Text(
-              title,
-              textAlign: TextAlign.center,
-              style: const TextStyle(
-                color: Colors.white,
-                fontSize: 16,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}
+} 
