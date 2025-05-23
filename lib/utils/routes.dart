@@ -48,7 +48,6 @@ class AppRoutes {
   
   static Map<String, WidgetBuilder> getRoutes() {
     return {
-      dashboard: (context) => const ProtectionDashboardScreen(),
       visaPaypal: (context) => const VisaPaypalScreen(),
       visa: (context) => const VisaScreen(),
       paypal: (context) => const PaypalScreen(),
