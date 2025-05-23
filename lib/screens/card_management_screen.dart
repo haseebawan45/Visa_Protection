@@ -263,10 +263,11 @@ class CardManagementScreen extends StatelessWidget {
                   iconColor: Colors.blue,
                   onTap: () => Navigator.pushNamed(context, AppRoutes.travelMode),
                 ),
-                const FeatureCard(
+                FeatureCard(
                   icon: Icons.code,
                   title: 'Ghost Payment Generator',
                   iconColor: Colors.blue,
+                  onTap: () => Navigator.pushNamed(context, AppRoutes.ghostPaymentGenerator),
                 ),
               ],
             ),

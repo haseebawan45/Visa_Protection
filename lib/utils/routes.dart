@@ -15,6 +15,7 @@ import '../screens/freeze_unfreeze_screen.dart';
 import '../screens/scam_radar_screen.dart';
 import '../screens/ai_refund_assistant_screen.dart';
 import '../screens/travel_mode_screen.dart';
+import '../screens/ghost_payment_generator_screen.dart';
 
 class AppRoutes {
   static const String dashboard = '/';
@@ -33,6 +34,7 @@ class AppRoutes {
   static const String scamRadar = '/scam-radar';
   static const String aiRefundAssistant = '/ai-refund-assistant';
   static const String travelMode = '/travel-mode';
+  static const String ghostPaymentGenerator = '/ghost-payment-generator';
   
   static Map<String, WidgetBuilder> getRoutes() {
     return {
@@ -57,6 +59,7 @@ class AppRoutes {
       scamRadar: (context) => const ScamRadarScreen(),
       aiRefundAssistant: (context) => const AIRefundAssistantScreen(),
       travelMode: (context) => const TravelModeScreen(),
+      ghostPaymentGenerator: (context) => const GhostPaymentGeneratorScreen(),
     };
   }
 } 
