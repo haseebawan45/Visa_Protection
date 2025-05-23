@@ -224,20 +224,45 @@ class CardManagementScreen extends StatelessWidget {
             
             const SizedBox(height: 16),
             
-            // Subscription Management Button
-            ElevatedButton.icon(
-              onPressed: () {
-                Navigator.pushNamed(context, AppRoutes.switchHub);
-              },
-              icon: const Icon(Icons.subscriptions, color: Colors.white),
-              label: const Text('Manage Subscriptions'),
-              style: ElevatedButton.styleFrom(
-                backgroundColor: const Color(0xFF1C1C1E),
-                padding: const EdgeInsets.symmetric(vertical: 12),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(8),
+            // Action Buttons
+            Row(
+              children: [
+                // Subscription Management Button
+                Expanded(
+                  child: ElevatedButton.icon(
+                    onPressed: () {
+                      Navigator.pushNamed(context, AppRoutes.switchHub);
+                    },
+                    icon: const Icon(Icons.subscriptions, color: Colors.white),
+                    label: const Text('Manage Subscriptions'),
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: const Color(0xFF1C1C1E),
+                      padding: const EdgeInsets.symmetric(vertical: 12),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                    ),
+                  ),
                 ),
-              ),
+                const SizedBox(width: 12),
+                // Group Protection Plan Button
+                Expanded(
+                  child: ElevatedButton.icon(
+                    onPressed: () {
+                      Navigator.pushNamed(context, AppRoutes.groupProtectionPlan);
+                    },
+                    icon: const Icon(Icons.shield, color: Colors.white),
+                    label: const Text('Protection Plan'),
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: const Color(0xFF1C1C1E),
+                      padding: const EdgeInsets.symmetric(vertical: 12),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                    ),
+                  ),
+                ),
+              ],
             ),
             
             const SizedBox(height: 24),
