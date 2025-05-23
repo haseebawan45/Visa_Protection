@@ -222,6 +222,24 @@ class CardManagementScreen extends StatelessWidget {
               ],
             ),
             
+            const SizedBox(height: 16),
+            
+            // Subscription Management Button
+            ElevatedButton.icon(
+              onPressed: () {
+                Navigator.pushNamed(context, AppRoutes.switchHub);
+              },
+              icon: const Icon(Icons.subscriptions, color: Colors.white),
+              label: const Text('Manage Subscriptions'),
+              style: ElevatedButton.styleFrom(
+                backgroundColor: const Color(0xFF1C1C1E),
+                padding: const EdgeInsets.symmetric(vertical: 12),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(8),
+                ),
+              ),
+            ),
+            
             const SizedBox(height: 24),
             
             // Features Grid
