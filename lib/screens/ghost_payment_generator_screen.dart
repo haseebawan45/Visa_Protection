@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../utils/routes.dart';
 
 class GhostPaymentGeneratorScreen extends StatefulWidget {
   const GhostPaymentGeneratorScreen({super.key});
@@ -133,8 +134,8 @@ class _GhostPaymentGeneratorScreenState extends State<GhostPaymentGeneratorScree
   Widget _buildGenerateButton() {
     return ElevatedButton(
       onPressed: () {
-        // Implement ghost payment generation logic
-        _showGhostPaymentGeneratedDialog();
+        // Navigate to ghost payment details screen
+        Navigator.pushNamed(context, AppRoutes.ghostPaymentDetails);
       },
       style: ElevatedButton.styleFrom(
         backgroundColor: const Color(0xFF1E58B4),
@@ -356,79 +357,6 @@ class _GhostPaymentGeneratorScreenState extends State<GhostPaymentGeneratorScree
                 ),
               ),
             ],
-          ),
-        ],
-      ),
-    );
-  }
-  
-  void _showGhostPaymentGeneratedDialog() {
-    showDialog(
-      context: context,
-      builder: (context) => AlertDialog(
-        backgroundColor: const Color(0xFF1C1C1E),
-        title: const Text(
-          'Ghost Payment Generated',
-          style: TextStyle(color: Colors.white),
-          textAlign: TextAlign.center,
-        ),
-        content: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            const Text(
-              'Your ghost payment method has been created. It will automatically expire after use.',
-              style: TextStyle(color: Colors.grey),
-              textAlign: TextAlign.center,
-            ),
-            const SizedBox(height: 24),
-            Container(
-              padding: const EdgeInsets.all(16),
-              decoration: BoxDecoration(
-                color: Colors.black,
-                borderRadius: BorderRadius.circular(12),
-                border: Border.all(color: Colors.grey.shade800),
-              ),
-              child: Column(
-                children: [
-                  const Text(
-                    'Ghost Card Details',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  const SizedBox(height: 12),
-                  _buildCardDetailRow('Card Number', '4821 XXXX XXXX 7392'),
-                  _buildCardDetailRow('Expiry', '06/25'),
-                  _buildCardDetailRow('CVV', '•••'),
-                ],
-              ),
-            ),
-          ],
-        ),
-        actions: [
-          TextButton(
-            onPressed: () => Navigator.pop(context),
-            child: const Text('Close', style: TextStyle(color: Colors.blue)),
-          ),
-        ],
-      ),
-    );
-  }
-  
-  Widget _buildCardDetailRow(String label, String value) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 4),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Text(
-            label,
-            style: TextStyle(color: Colors.grey[400]),
-          ),
-          Text(
-            value,
-            style: const TextStyle(color: Colors.white),
           ),
         ],
       ),
