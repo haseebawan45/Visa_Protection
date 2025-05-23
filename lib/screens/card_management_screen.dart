@@ -257,10 +257,11 @@ class CardManagementScreen extends StatelessWidget {
                   iconColor: Colors.blue,
                   onTap: () => Navigator.pushNamed(context, AppRoutes.aiRefundAssistant),
                 ),
-                const FeatureCard(
+                FeatureCard(
                   icon: Icons.card_travel,
                   title: 'Travel Mode',
                   iconColor: Colors.blue,
+                  onTap: () => Navigator.pushNamed(context, AppRoutes.travelMode),
                 ),
                 const FeatureCard(
                   icon: Icons.code,
