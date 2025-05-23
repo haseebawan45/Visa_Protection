@@ -2,25 +2,44 @@ import 'package:flutter/material.dart';
 import '../utils/routes.dart';
 
 class CardManagementScreen extends StatelessWidget {
-  const CardManagementScreen({super.key});
+  final bool isInTabView;
+  
+  const CardManagementScreen({
+    super.key,
+    this.isInTabView = false,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.black,
-      appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-        iconTheme: const IconThemeData(color: Colors.white),
-        actions: [
-          Switch(
-            value: true, // For dark theme
-            onChanged: (_) {},
-            activeColor: Colors.blue,
+      appBar: isInTabView 
+        ? AppBar(
+            backgroundColor: Colors.transparent,
+            elevation: 0,
+            title: const Text('My Cards', style: TextStyle(color: Colors.white)),
+            actions: [
+              Switch(
+                value: true, // For dark theme
+                onChanged: (_) {},
+                activeColor: Colors.blue,
+              ),
+              const SizedBox(width: 16),
+            ],
+          )
+        : AppBar(
+            backgroundColor: Colors.transparent,
+            elevation: 0,
+            iconTheme: const IconThemeData(color: Colors.white),
+            actions: [
+              Switch(
+                value: true, // For dark theme
+                onChanged: (_) {},
+                activeColor: Colors.blue,
+              ),
+              const SizedBox(width: 16),
+            ],
           ),
-          const SizedBox(width: 16),
-        ],
-      ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(16.0),
         child: Column(
@@ -267,6 +286,35 @@ class CardManagementScreen extends StatelessWidget {
             
             const SizedBox(height: 24),
             
+            // Features Section Title
+            Padding(
+              padding: const EdgeInsets.only(bottom: 16.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  const Text(
+                    'Card Protection Features',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 18,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                  TextButton(
+                    onPressed: isInTabView 
+                      ? () => Navigator.pushNamed(context, AppRoutes.features)
+                      : null,
+                    child: Text(
+                      isInTabView ? 'View all' : '',
+                      style: const TextStyle(
+                        color: Colors.blue,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            
             // Features Grid
             GridView.count(
               shrinkWrap: true,
@@ -317,18 +365,19 @@ class CardManagementScreen extends StatelessWidget {
             
             const SizedBox(height: 24),
             
-            // Bottom Card Management Button
-            Center(
-              child: CircleAvatar(
-                radius: 30,
-                backgroundColor: Colors.blue,
-                child: IconButton(
-                  icon: const Icon(Icons.credit_card, color: Colors.white),
-                  onPressed: () {},
-                  iconSize: 28,
+            // Bottom Card Management Button (only show if not in tab view)
+            if (!isInTabView) 
+              Center(
+                child: CircleAvatar(
+                  radius: 30,
+                  backgroundColor: Colors.blue,
+                  child: IconButton(
+                    icon: const Icon(Icons.credit_card, color: Colors.white),
+                    onPressed: () {},
+                    iconSize: 28,
+                  ),
                 ),
               ),
-            ),
           ],
         ),
       ),

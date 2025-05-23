@@ -19,6 +19,8 @@ import '../screens/ghost_payment_generator_screen.dart';
 import '../screens/ghost_payment_details_screen.dart';
 import '../screens/switch_hub_screen.dart';
 import '../screens/group_protection_plan_screen.dart';
+import '../screens/features_screen.dart';
+import '../screens/account_screen.dart';
 
 class AppRoutes {
   static const String dashboard = '/';
@@ -41,6 +43,8 @@ class AppRoutes {
   static const String ghostPaymentDetails = '/ghost-payment-details';
   static const String switchHub = '/switch-hub';
   static const String groupProtectionPlan = '/group-protection-plan';
+  static const String features = '/features';
+  static const String account = '/account';
   
   static Map<String, WidgetBuilder> getRoutes() {
     return {
@@ -69,6 +73,8 @@ class AppRoutes {
       ghostPaymentDetails: (context) => const GhostPaymentDetailsScreen(),
       switchHub: (context) => const SwitchHubScreen(),
       groupProtectionPlan: (context) => const GroupProtectionPlanScreen(),
+      features: (context) => const FeaturesScreen(),
+      account: (context) => const AccountScreen(),
     };
   }
 } 

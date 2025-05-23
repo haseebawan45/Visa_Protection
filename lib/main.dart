@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 import 'utils/routes.dart';
+import 'screens/protection_dashboard_screen.dart';
+import 'screens/card_management_screen.dart';
+import 'screens/features_screen.dart';
+import 'screens/account_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -11,19 +15,81 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Visa Protection',
-      debugShowCheckedModeBanner: false,
+      title: 'Visa & Protection',
       theme: ThemeData(
         primarySwatch: Colors.blue,
-        scaffoldBackgroundColor: const Color(0xFF0A1929),
-        appBarTheme: const AppBarTheme(
-          backgroundColor: Colors.transparent,
-          elevation: 0,
-          foregroundColor: Colors.white,
+        scaffoldBackgroundColor: Colors.black,
+        textTheme: const TextTheme(
+          bodyMedium: TextStyle(color: Colors.white),
+        ),
+        useMaterial3: true,
+      ),
+      home: const MainNavigation(),
+      routes: AppRoutes.getRoutes(),
+    );
+  }
+}
+
+class MainNavigation extends StatefulWidget {
+  const MainNavigation({super.key});
+
+  @override
+  State<MainNavigation> createState() => _MainNavigationState();
+}
+
+class _MainNavigationState extends State<MainNavigation> {
+  int _currentIndex = 0;
+
+  final List<Widget> _screens = [
+    const ProtectionDashboardScreen(isInTabView: true),
+    const CardManagementScreen(isInTabView: true),
+    const FeaturesScreen(),
+    const AccountScreen(),
+  ];
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: _screens[_currentIndex],
+      bottomNavigationBar: Container(
+        decoration: const BoxDecoration(
+          border: Border(
+            top: BorderSide(color: Color(0xFF1C1C1E), width: 1),
+          ),
+        ),
+        child: BottomNavigationBar(
+          currentIndex: _currentIndex,
+          onTap: (index) {
+    setState(() {
+              _currentIndex = index;
+            });
+          },
+          type: BottomNavigationBarType.fixed,
+          backgroundColor: Colors.black,
+          selectedItemColor: Colors.blue,
+          unselectedItemColor: Colors.grey,
+          showSelectedLabels: true,
+          showUnselectedLabels: true,
+          items: const [
+            BottomNavigationBarItem(
+              icon: Icon(Icons.home),
+              label: 'Home',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.credit_card),
+              label: 'Cards',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.shield),
+              label: 'Features',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.person),
+              label: 'Account',
+            ),
+          ],
         ),
       ),
-      initialRoute: AppRoutes.dashboard,
-      routes: AppRoutes.getRoutes(),
     );
   }
 }
